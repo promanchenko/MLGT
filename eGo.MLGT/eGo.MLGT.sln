@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eGo.MLGT.Bl", "eGo.MLGT.Bl\eGo.MLGT.Bl.csproj", "{2CA5B4C5-88F5-4FAF-88C7-7E27B6CAE0AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eGo.MLGT.Web", "eGo.MLGT.Web\eGo.MLGT.Web.csproj", "{6F706642-28CC-47BF-8C39-276D1A1D3604}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eGo.MLGT.Web.Tests", "eGo.MLGT.Web.Tests\eGo.MLGT.Web.Tests.csproj", "{83118353-DB0B-4053-96BD-39864976EF60}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{2A7581AC-C5E4-49B2-BCBF-8F75D8977955}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eGo.MLGT.WebApi", "eGo.MLGT.WebApi\eGo.MLGT.WebApi.csproj", "{72359F15-09F7-413F-B28C-77012404D82B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eGo.MLGT.WebApi.Tests", "eGo.MLGT.WebApi.Tests\eGo.MLGT.WebApi.Tests.csproj", "{B6D0F76A-7E9F-46C6-84CB-E32A95CFDC07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eGo.MLGT.DAL", "eGo.MLGT.DAL\eGo.MLGT.DAL.csproj", "{FCF70C63-5EFC-427A-94AB-F3D363045666}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eGo.MLGT.DTO", "eGo.MLGT.DTO\eGo.MLGT.DTO.csproj", "{6B54E224-120F-476B-93D8-9E40BF5A2567}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CA5B4C5-88F5-4FAF-88C7-7E27B6CAE0AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CA5B4C5-88F5-4FAF-88C7-7E27B6CAE0AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CA5B4C5-88F5-4FAF-88C7-7E27B6CAE0AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CA5B4C5-88F5-4FAF-88C7-7E27B6CAE0AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F706642-28CC-47BF-8C39-276D1A1D3604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F706642-28CC-47BF-8C39-276D1A1D3604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F706642-28CC-47BF-8C39-276D1A1D3604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F706642-28CC-47BF-8C39-276D1A1D3604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83118353-DB0B-4053-96BD-39864976EF60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83118353-DB0B-4053-96BD-39864976EF60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83118353-DB0B-4053-96BD-39864976EF60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83118353-DB0B-4053-96BD-39864976EF60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72359F15-09F7-413F-B28C-77012404D82B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72359F15-09F7-413F-B28C-77012404D82B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72359F15-09F7-413F-B28C-77012404D82B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72359F15-09F7-413F-B28C-77012404D82B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6D0F76A-7E9F-46C6-84CB-E32A95CFDC07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6D0F76A-7E9F-46C6-84CB-E32A95CFDC07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6D0F76A-7E9F-46C6-84CB-E32A95CFDC07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6D0F76A-7E9F-46C6-84CB-E32A95CFDC07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCF70C63-5EFC-427A-94AB-F3D363045666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCF70C63-5EFC-427A-94AB-F3D363045666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCF70C63-5EFC-427A-94AB-F3D363045666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCF70C63-5EFC-427A-94AB-F3D363045666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B54E224-120F-476B-93D8-9E40BF5A2567}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B54E224-120F-476B-93D8-9E40BF5A2567}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B54E224-120F-476B-93D8-9E40BF5A2567}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B54E224-120F-476B-93D8-9E40BF5A2567}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{83118353-DB0B-4053-96BD-39864976EF60} = {2A7581AC-C5E4-49B2-BCBF-8F75D8977955}
+		{B6D0F76A-7E9F-46C6-84CB-E32A95CFDC07} = {2A7581AC-C5E4-49B2-BCBF-8F75D8977955}
+	EndGlobalSection
+EndGlobal

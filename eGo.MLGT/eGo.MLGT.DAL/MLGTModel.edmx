@@ -1,0 +1,669 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MLGTModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MLGTModelStoreContainer">
+          <EntitySet Name="Campaigns" EntityType="MLGTModel.Store.Campaigns" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FieldTypes" EntityType="MLGTModel.Store.FieldTypes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FieldTypeValues" EntityType="MLGTModel.Store.FieldTypeValues" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SealFields" EntityType="MLGTModel.Store.SealFields" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Seals" EntityType="MLGTModel.Store.Seals" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SealScenario" EntityType="MLGTModel.Store.SealScenario" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SealStatistic" EntityType="MLGTModel.Store.SealStatistic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StatisticMetrics" EntityType="MLGTModel.Store.StatisticMetrics" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="MLGTModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Templates" EntityType="MLGTModel.Store.Templates" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Campaigns_Seals" Association="MLGTModel.Store.FK_Campaigns_Seals">
+            <End Role="Seals" EntitySet="Seals" />
+            <End Role="Campaigns" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FieldTypeValues_FieldTypes" Association="MLGTModel.Store.FK_FieldTypeValues_FieldTypes">
+            <End Role="FieldTypes" EntitySet="FieldTypes" />
+            <End Role="FieldTypeValues" EntitySet="FieldTypeValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FieldTypeValues_FieldTypeValues" Association="MLGTModel.Store.FK_FieldTypeValues_FieldTypeValues">
+            <End Role="FieldTypeValues" EntitySet="FieldTypeValues" />
+            <End Role="FieldTypeValues1" EntitySet="FieldTypeValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SealFields_FieldTypes" Association="MLGTModel.Store.FK_SealFields_FieldTypes">
+            <End Role="FieldTypes" EntitySet="FieldTypes" />
+            <End Role="SealFields" EntitySet="SealFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SealForms_Seals" Association="MLGTModel.Store.FK_SealForms_Seals">
+            <End Role="Seals" EntitySet="Seals" />
+            <End Role="SealFields" EntitySet="SealFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seals_Templates" Association="MLGTModel.Store.FK_Seals_Templates">
+            <End Role="Templates" EntitySet="Templates" />
+            <End Role="Seals" EntitySet="Seals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SealScenario_Seals" Association="MLGTModel.Store.FK_SealScenario_Seals">
+            <End Role="Seals" EntitySet="Seals" />
+            <End Role="SealScenario" EntitySet="SealScenario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SealStatistic_Seals" Association="MLGTModel.Store.FK_SealStatistic_Seals">
+            <End Role="Seals" EntitySet="Seals" />
+            <End Role="SealStatistic" EntitySet="SealStatistic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SealStatistic_StatisticMetrics" Association="MLGTModel.Store.FK_SealStatistic_StatisticMetrics">
+            <End Role="StatisticMetrics" EntitySet="StatisticMetrics" />
+            <End Role="SealStatistic" EntitySet="SealStatistic" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Campaigns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SealId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="255" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FieldTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FieldTypeValues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FieldTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="ParentId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="SealFields">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SealId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FieldTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="IsRequired" Type="bit" Nullable="false" />
+          <Property Name="IsEmail" Type="bit" Nullable="false" />
+          <Property Name="OrderNumber" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="WebsiteURL" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="ClientEmailAddress" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="TemplateId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientEmailBody" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserEmailBody" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SealScenario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SealId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Value" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="SealStatistic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SealId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StatisticMetricId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AddDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatisticMetrics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Templates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Template" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AddDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Campaigns_Seals">
+          <End Role="Seals" Type="MLGTModel.Store.Seals" Multiplicity="1" />
+          <End Role="Campaigns" Type="MLGTModel.Store.Campaigns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Campaigns">
+              <PropertyRef Name="SealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FieldTypeValues_FieldTypes">
+          <End Role="FieldTypes" Type="MLGTModel.Store.FieldTypes" Multiplicity="1" />
+          <End Role="FieldTypeValues" Type="MLGTModel.Store.FieldTypeValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FieldTypeValues">
+              <PropertyRef Name="FieldTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FieldTypeValues_FieldTypeValues">
+          <End Role="FieldTypeValues" Type="MLGTModel.Store.FieldTypeValues" Multiplicity="0..1" />
+          <End Role="FieldTypeValues1" Type="MLGTModel.Store.FieldTypeValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldTypeValues">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FieldTypeValues1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SealFields_FieldTypes">
+          <End Role="FieldTypes" Type="MLGTModel.Store.FieldTypes" Multiplicity="1" />
+          <End Role="SealFields" Type="MLGTModel.Store.SealFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SealFields">
+              <PropertyRef Name="FieldTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SealForms_Seals">
+          <End Role="Seals" Type="MLGTModel.Store.Seals" Multiplicity="1" />
+          <End Role="SealFields" Type="MLGTModel.Store.SealFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SealFields">
+              <PropertyRef Name="SealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seals_Templates">
+          <End Role="Templates" Type="MLGTModel.Store.Templates" Multiplicity="1" />
+          <End Role="Seals" Type="MLGTModel.Store.Seals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Templates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Seals">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SealScenario_Seals">
+          <End Role="Seals" Type="MLGTModel.Store.Seals" Multiplicity="1" />
+          <End Role="SealScenario" Type="MLGTModel.Store.SealScenario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SealScenario">
+              <PropertyRef Name="SealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SealStatistic_Seals">
+          <End Role="Seals" Type="MLGTModel.Store.Seals" Multiplicity="1" />
+          <End Role="SealStatistic" Type="MLGTModel.Store.SealStatistic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SealStatistic">
+              <PropertyRef Name="SealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SealStatistic_StatisticMetrics">
+          <End Role="StatisticMetrics" Type="MLGTModel.Store.StatisticMetrics" Multiplicity="1" />
+          <End Role="SealStatistic" Type="MLGTModel.Store.SealStatistic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatisticMetrics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SealStatistic">
+              <PropertyRef Name="StatisticMetricId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MLGTModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MLGTEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Campaigns" EntityType="MLGTModel.Campaigns" />
+          <EntitySet Name="FieldTypes" EntityType="MLGTModel.FieldTypes" />
+          <EntitySet Name="FieldTypeValues" EntityType="MLGTModel.FieldTypeValues" />
+          <EntitySet Name="SealFields" EntityType="MLGTModel.SealFields" />
+          <EntitySet Name="Seals" EntityType="MLGTModel.Seals" />
+          <EntitySet Name="SealScenario" EntityType="MLGTModel.SealScenario" />
+          <EntitySet Name="SealStatistic" EntityType="MLGTModel.SealStatistic" />
+          <EntitySet Name="StatisticMetrics" EntityType="MLGTModel.StatisticMetrics" />
+          <EntitySet Name="sysdiagrams" EntityType="MLGTModel.sysdiagrams" />
+          <EntitySet Name="Templates" EntityType="MLGTModel.Templates" />
+          <AssociationSet Name="FK_Campaigns_Seals" Association="MLGTModel.FK_Campaigns_Seals">
+            <End Role="Seals" EntitySet="Seals" />
+            <End Role="Campaigns" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FieldTypeValues_FieldTypes" Association="MLGTModel.FK_FieldTypeValues_FieldTypes">
+            <End Role="FieldTypes" EntitySet="FieldTypes" />
+            <End Role="FieldTypeValues" EntitySet="FieldTypeValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SealFields_FieldTypes" Association="MLGTModel.FK_SealFields_FieldTypes">
+            <End Role="FieldTypes" EntitySet="FieldTypes" />
+            <End Role="SealFields" EntitySet="SealFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FieldTypeValues_FieldTypeValues" Association="MLGTModel.FK_FieldTypeValues_FieldTypeValues">
+            <End Role="FieldTypeValues" EntitySet="FieldTypeValues" />
+            <End Role="FieldTypeValues1" EntitySet="FieldTypeValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SealForms_Seals" Association="MLGTModel.FK_SealForms_Seals">
+            <End Role="Seals" EntitySet="Seals" />
+            <End Role="SealFields" EntitySet="SealFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seals_Templates" Association="MLGTModel.FK_Seals_Templates">
+            <End Role="Templates" EntitySet="Templates" />
+            <End Role="Seals" EntitySet="Seals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SealScenario_Seals" Association="MLGTModel.FK_SealScenario_Seals">
+            <End Role="Seals" EntitySet="Seals" />
+            <End Role="SealScenario" EntitySet="SealScenario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SealStatistic_Seals" Association="MLGTModel.FK_SealStatistic_Seals">
+            <End Role="Seals" EntitySet="Seals" />
+            <End Role="SealStatistic" EntitySet="SealStatistic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SealStatistic_StatisticMetrics" Association="MLGTModel.FK_SealStatistic_StatisticMetrics">
+            <End Role="StatisticMetrics" EntitySet="StatisticMetrics" />
+            <End Role="SealStatistic" EntitySet="SealStatistic" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Campaigns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SealId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Seals" Relationship="MLGTModel.FK_Campaigns_Seals" FromRole="Campaigns" ToRole="Seals" />
+        </EntityType>
+        <EntityType Name="FieldTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="FieldTypeValues" Relationship="MLGTModel.FK_FieldTypeValues_FieldTypes" FromRole="FieldTypes" ToRole="FieldTypeValues" />
+          <NavigationProperty Name="SealFields" Relationship="MLGTModel.FK_SealFields_FieldTypes" FromRole="FieldTypes" ToRole="SealFields" />
+        </EntityType>
+        <EntityType Name="FieldTypeValues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FieldTypeId" Type="Guid" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ParentId" Type="Guid" />
+          <NavigationProperty Name="FieldTypes" Relationship="MLGTModel.FK_FieldTypeValues_FieldTypes" FromRole="FieldTypeValues" ToRole="FieldTypes" />
+          <NavigationProperty Name="FieldTypeValues1" Relationship="MLGTModel.FK_FieldTypeValues_FieldTypeValues" FromRole="FieldTypeValues" ToRole="FieldTypeValues1" />
+          <NavigationProperty Name="FieldTypeValues2" Relationship="MLGTModel.FK_FieldTypeValues_FieldTypeValues" FromRole="FieldTypeValues1" ToRole="FieldTypeValues" />
+        </EntityType>
+        <EntityType Name="SealFields">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SealId" Type="Guid" Nullable="false" />
+          <Property Name="FieldTypeId" Type="Guid" Nullable="false" />
+          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="IsRequired" Type="Boolean" Nullable="false" />
+          <Property Name="IsEmail" Type="Boolean" Nullable="false" />
+          <Property Name="OrderNumber" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="FieldTypes" Relationship="MLGTModel.FK_SealFields_FieldTypes" FromRole="SealFields" ToRole="FieldTypes" />
+          <NavigationProperty Name="Seals" Relationship="MLGTModel.FK_SealForms_Seals" FromRole="SealFields" ToRole="Seals" />
+        </EntityType>
+        <EntityType Name="Seals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="WebsiteURL" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ClientEmailAddress" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="TemplateId" Type="Guid" Nullable="false" />
+          <Property Name="ClientEmailBody" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UserEmailBody" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Campaigns" Relationship="MLGTModel.FK_Campaigns_Seals" FromRole="Seals" ToRole="Campaigns" />
+          <NavigationProperty Name="SealFields" Relationship="MLGTModel.FK_SealForms_Seals" FromRole="Seals" ToRole="SealFields" />
+          <NavigationProperty Name="Templates" Relationship="MLGTModel.FK_Seals_Templates" FromRole="Seals" ToRole="Templates" />
+          <NavigationProperty Name="SealScenario" Relationship="MLGTModel.FK_SealScenario_Seals" FromRole="Seals" ToRole="SealScenario" />
+          <NavigationProperty Name="SealStatistic" Relationship="MLGTModel.FK_SealStatistic_Seals" FromRole="Seals" ToRole="SealStatistic" />
+        </EntityType>
+        <EntityType Name="SealScenario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SealId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Seals" Relationship="MLGTModel.FK_SealScenario_Seals" FromRole="SealScenario" ToRole="Seals" />
+        </EntityType>
+        <EntityType Name="SealStatistic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SealId" Type="Guid" Nullable="false" />
+          <Property Name="StatisticMetricId" Type="Guid" Nullable="false" />
+          <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Seals" Relationship="MLGTModel.FK_SealStatistic_Seals" FromRole="SealStatistic" ToRole="Seals" />
+          <NavigationProperty Name="StatisticMetrics" Relationship="MLGTModel.FK_SealStatistic_StatisticMetrics" FromRole="SealStatistic" ToRole="StatisticMetrics" />
+        </EntityType>
+        <EntityType Name="StatisticMetrics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="SealStatistic" Relationship="MLGTModel.FK_SealStatistic_StatisticMetrics" FromRole="StatisticMetrics" ToRole="SealStatistic" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Templates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Template" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Seals" Relationship="MLGTModel.FK_Seals_Templates" FromRole="Templates" ToRole="Seals" />
+        </EntityType>
+        <Association Name="FK_Campaigns_Seals">
+          <End Role="Seals" Type="MLGTModel.Seals" Multiplicity="1" />
+          <End Role="Campaigns" Type="MLGTModel.Campaigns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Campaigns">
+              <PropertyRef Name="SealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FieldTypeValues_FieldTypes">
+          <End Role="FieldTypes" Type="MLGTModel.FieldTypes" Multiplicity="1" />
+          <End Role="FieldTypeValues" Type="MLGTModel.FieldTypeValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FieldTypeValues">
+              <PropertyRef Name="FieldTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SealFields_FieldTypes">
+          <End Role="FieldTypes" Type="MLGTModel.FieldTypes" Multiplicity="1" />
+          <End Role="SealFields" Type="MLGTModel.SealFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SealFields">
+              <PropertyRef Name="FieldTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FieldTypeValues_FieldTypeValues">
+          <End Role="FieldTypeValues" Type="MLGTModel.FieldTypeValues" Multiplicity="0..1" />
+          <End Role="FieldTypeValues1" Type="MLGTModel.FieldTypeValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldTypeValues">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FieldTypeValues1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SealForms_Seals">
+          <End Role="Seals" Type="MLGTModel.Seals" Multiplicity="1" />
+          <End Role="SealFields" Type="MLGTModel.SealFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SealFields">
+              <PropertyRef Name="SealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seals_Templates">
+          <End Role="Templates" Type="MLGTModel.Templates" Multiplicity="1" />
+          <End Role="Seals" Type="MLGTModel.Seals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Templates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Seals">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SealScenario_Seals">
+          <End Role="Seals" Type="MLGTModel.Seals" Multiplicity="1" />
+          <End Role="SealScenario" Type="MLGTModel.SealScenario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SealScenario">
+              <PropertyRef Name="SealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SealStatistic_Seals">
+          <End Role="Seals" Type="MLGTModel.Seals" Multiplicity="1" />
+          <End Role="SealStatistic" Type="MLGTModel.SealStatistic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SealStatistic">
+              <PropertyRef Name="SealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SealStatistic_StatisticMetrics">
+          <End Role="StatisticMetrics" Type="MLGTModel.StatisticMetrics" Multiplicity="1" />
+          <End Role="SealStatistic" Type="MLGTModel.SealStatistic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatisticMetrics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SealStatistic">
+              <PropertyRef Name="StatisticMetricId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MLGTModelStoreContainer" CdmEntityContainer="MLGTEntities">
+          <EntitySetMapping Name="Campaigns">
+            <EntityTypeMapping TypeName="MLGTModel.Campaigns">
+              <MappingFragment StoreEntitySet="Campaigns">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SealId" ColumnName="SealId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FieldTypes">
+            <EntityTypeMapping TypeName="MLGTModel.FieldTypes">
+              <MappingFragment StoreEntitySet="FieldTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FieldTypeValues">
+            <EntityTypeMapping TypeName="MLGTModel.FieldTypeValues">
+              <MappingFragment StoreEntitySet="FieldTypeValues">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FieldTypeId" ColumnName="FieldTypeId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SealFields">
+            <EntityTypeMapping TypeName="MLGTModel.SealFields">
+              <MappingFragment StoreEntitySet="SealFields">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SealId" ColumnName="SealId" />
+                <ScalarProperty Name="FieldTypeId" ColumnName="FieldTypeId" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+                <ScalarProperty Name="IsEmail" ColumnName="IsEmail" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seals">
+            <EntityTypeMapping TypeName="MLGTModel.Seals">
+              <MappingFragment StoreEntitySet="Seals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="WebsiteURL" ColumnName="WebsiteURL" />
+                <ScalarProperty Name="ClientEmailAddress" ColumnName="ClientEmailAddress" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+                <ScalarProperty Name="ClientEmailBody" ColumnName="ClientEmailBody" />
+                <ScalarProperty Name="UserEmailBody" ColumnName="UserEmailBody" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SealScenario">
+            <EntityTypeMapping TypeName="MLGTModel.SealScenario">
+              <MappingFragment StoreEntitySet="SealScenario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SealId" ColumnName="SealId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SealStatistic">
+            <EntityTypeMapping TypeName="MLGTModel.SealStatistic">
+              <MappingFragment StoreEntitySet="SealStatistic">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SealId" ColumnName="SealId" />
+                <ScalarProperty Name="StatisticMetricId" ColumnName="StatisticMetricId" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatisticMetrics">
+            <EntityTypeMapping TypeName="MLGTModel.StatisticMetrics">
+              <MappingFragment StoreEntitySet="StatisticMetrics">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MLGTModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Templates">
+            <EntityTypeMapping TypeName="MLGTModel.Templates">
+              <MappingFragment StoreEntitySet="Templates">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

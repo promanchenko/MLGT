@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7a829dbf1ad041f89ad53f514c7f898b" Name="Diagram1">
+        <EntityTypeShape EntityType="MLGTModel.Campaigns" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLGTModel.FieldTypes" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLGTModel.FieldTypeValues" Width="1.5" PointX="8.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLGTModel.SealFields" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLGTModel.Seals" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLGTModel.SealScenario" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLGTModel.SealStatistic" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLGTModel.StatisticMetrics" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLGTModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLGTModel.Templates" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="MLGTModel.FK_Campaigns_Seals" ManuallyRouted="false" />
+        <AssociationConnector Association="MLGTModel.FK_FieldTypeValues_FieldTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="MLGTModel.FK_SealFields_FieldTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="MLGTModel.FK_FieldTypeValues_FieldTypeValues" ManuallyRouted="false" />
+        <AssociationConnector Association="MLGTModel.FK_SealForms_Seals" ManuallyRouted="false" />
+        <AssociationConnector Association="MLGTModel.FK_Seals_Templates" ManuallyRouted="false" />
+        <AssociationConnector Association="MLGTModel.FK_SealScenario_Seals" ManuallyRouted="false" />
+        <AssociationConnector Association="MLGTModel.FK_SealStatistic_Seals" ManuallyRouted="false" />
+        <AssociationConnector Association="MLGTModel.FK_SealStatistic_StatisticMetrics" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
